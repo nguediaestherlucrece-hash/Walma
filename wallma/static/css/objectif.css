@@ -1,0 +1,15 @@
+#input{
+    border-radius: 5px;
+   
+}
+button{
+    position: relative;
+    top: 20px;
+    width: 100%;
+}
+.cadre1{
+    display:none;
+}
+ td{
+    margin: 5px;
+ }

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <script type="module" src="/static/js/init.js"></script>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>Dashboard</title>
+</head>
+
+<body class="d-flex flex-nowrap ">
+    <header class="d-none d-lg-flex flex-column flex-shrink-0 p-3  bg-body-tertiary" style="width: 300px">
+
+        <div class="container-fluid mb-3 d-flex align-items-center ">
+            <img src="../assets/logo/logo_outline.png" class="img me-2" style="width: 30px;">
+            <span id="appName">Wallma</span>
+        </div>
+        <ul class="nav nav-pills flex-column mb-auto ">
+
+            <li class="nav-item">
+                <a href="#" class="nav-link own-active rounded-2  bg-body card flex-row text-primary"
+                    aria-current="page">
+                    <i class="bi bi-house fs-6 me-3 "></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link rounded-2  " aria-current="page">
+                    <i class="bi bi-graph-up-arrow fs-6 me-3"></i>
+                    Revenus
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link rounded-2 " aria-current="page">
+                    <i class="bi bi-graph-down-arrow fs-6 me-3"></i>
+                    Depenses
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link rounded-2  " aria-current="page">
+                    <i class="bi bi-list-check fs-6 me-3"></i>
+                    Obligations financieres
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="conseiller.html" class="nav-link rounded-2  " aria-current="page">
+                    <i class="bi bi-chat-square-dots fs-6 me-3"></i>
+                    Conseiller
+                </a>
+            </li>
+        </ul>
+        <div>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="profil.html" class="nav-link rounded-2  " aria-current="page">
+                        <i class="bi bi-person fs-6 me-3"></i>
+                        Profil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link rounded-2  " aria-current="page">
+                        <i class="bi bi-gear fs-6 me-3"></i>
+                        Parametres
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </header>
+
+    <!-- Espace de travail -->
+    <main class="container-fluid flex-grow-1 bg-body-secondary overflow-auto pe-3 ps-3 ">
+
+
+        <!-- Barre d'acces rapide -->
+        <section id="work-header"
+            class="row position-sticky top-0  pt-2  pb-2 ps-md-2 pe-md-2  z-1  g-0 bg-body-secondary">
+
+            <div class="col  justify-content-between   d-flex flex-row align-items-center p-0">
+
+                <div class="col d-flex flex-row gap-4 align-items-center  justify-content-start">
+
+                    <i class="d-lg-none bi bi-list fs-2" data-bs-toggle="offcanvas" href="#offmenu" role="button"
+                        aria-controls="offmenu">
+
+                    </i>
+
+                    <div class="offcanvas offcanvas-start bg-body-tertiary" tabindex="-1" id="offmenu"
+                        aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                            <div class="container-fluid mb-3 d-flex align-items-center ">
+                                <img src="../assets/logo/logo_filled.png" class="img me-2" style="width: 40px;">
+
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+
+                        <div class="offcanvas-body">
+                            <ul class="nav nav-pills flex-column">
+
+                                <li class="nav-item">
+                                    <a href="#"
+                                        class="nav-link rounded-2  own-active rounded-2 card text-primary flex-row bg-body">
+                                        <i class="bi bi-house fs-6 me-3"></i>
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="bi bi-graph-up-arrow fs-6 me-3"></i>
+                                        Revenus
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="bi bi-graph-down-arrow fs-6 me-3"></i>
+                                        Depenses
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="bi bi-list-check fs-6 me-3"></i>
+                                        Obligations financieres
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="conseiller.html" class="nav-link">
+                                        <i class="bi bi-chat-square-dots fs-6 me-3"></i>
+                                        Conseiller
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="profil.html" class="nav-link " aria-current="page">
+                                        <i class="bi bi-person fs-6 me-3"></i>
+                                        Profil
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link " aria-current="page">
+                                        <i class="bi bi-gear fs-6 me-3"></i>
+                                        Parametres
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Menu invisible -->
+                    <span class="d-none d-md-block fs-4 fw-medium">Dashboard</span>
+                </div>
+                <div class="container w-auto d-flex flex-row gap-2 align-items-center  pe-0">
+                    <div class="dropdown">
+                        <button class="btn border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-translate fs-5 "></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" style="width: 120px; min-width: 100px">
+                            <li>
+                                <a class="dropdown-item active" aria-current="true" href="#">Francais</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Anglais</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button id="themeBtn" class="btn border-0 dropdown-toggle btn-sm" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i id="themeIcon" class="bi bi-sun-fill  fs-5 "></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" style="width: 120px;min-width:100px;">
+                            <li>
+                                <a class="dropdown-item" href="#" data-bs-theme-value="dark">
+                                    <i class="bi bi-moon-stars me-2 fs-6 " aria-pressed="false"></i>Dark
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item active" aria-current="true" href="#" data-bs-theme-value="Light"
+                                    aria-pressed="false">
+                                    <i class="bi bi-sun-fill fs-6 me-2 "></i>Light
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="bi bi-circle-half fs-6 me-2"></i>Auto
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="container-fluid   d-flex flex-row justify-content-between gap-4 pe-0">
+
+                        <div>
+                            <i class="bi bi-trophy fs-5 d-xl-none card p-2"></i>
+                        </div>
+                        <div>
+                            <i class=" bi bi-bell fs-5 card p-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  votre espace -->
+        <section id="welcome" class="row g-0 pb-2 pt-4">
+            <h1 class="p-0 m-0">Bon retour, Off1805</h1>
+
+        </section>
+
+        <!-- Zone 2 -->
+
+        <section class="container-fluid bg-danger flex-grow-1 m-0 p-0 d-flex flex-column gap-5">
+            <div class="row  m-0">
+                <div class="col-12 col-md-6 col-xl bg-dark">
+                    <div
+                        class=" container-fluid h6 m-0 p-0 fw-light d-flex align-items-start justify-content-start card rounded-2 ps-4 p-2 text-start">
+                        <h5 class=" d-none d-xl-block mb-1">Conseil du jour</h5>
+                        Pensez a rembourseer vos dettes Lorem, ipsum dolor sit amet consectetur
+                        adipisicing elit. Reiciendis, dolor.
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl bg-light">
+                    <div id="solde-card"
+                        class="card  rounded-2 d-flex flex-row  justify-content-around align-items-center p-2 pt-2 pb-3 ">
+                        <div class=" d-flex flex-row align-items-center gap-2 me-2" style="width: fit-content;">
+                            <i
+                                class="bi bi-currency-dollar fs-6  rounded-circle card p-2 border-orange text-orange "></i>
+                            <span class="fs-6">Solde</span>
+                        </div>
+                        <h5 class="m-0">76K</h5>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl bg-info">
+                    <div id="solde-card"
+                        class=" card  rounded-2 d-flex flex-row  justify-content-around align-items-center p-2 pt-2 pb-3 ">
+                        <div class=" d-flex flex-row align-items-center gap-2  justify-content-center"
+                            style="width:fit-content;">
+                            <i
+                                class="bi bi-currency-dollar fs-6  rounded-circle card p-2 border-orange  text-orange"></i>
+                            <span class="fs-6">Epargne</span>
+                        </div>
+                        <h5 class="m-0">76K</h5>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl bg-success">k</div>
+            </div>
+            <div class="row  m-0">
+                <div class="col-12  col-xxl-6 bg-dark">k</div>
+                <div class="col-12 col-md-6 col-xxl-3 bg-light">k</div>
+                <div class="col-12 col-md-6 col-xxl-3 bg-info">k</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- fin de votre espace -->
+    </main>
+
+
+    <script type="module" src="/src/main.js"></script>
+
+</body>
+
+</html>

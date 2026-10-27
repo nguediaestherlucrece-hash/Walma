@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallma - Gérez vos finances intelligemment</title>
+  <link rel="stylesheet" href="./static/css/style_obligation.css">
+</head>
+<body>
+  
+
+  <nav class="navbar">
+    <div class="logo">Wallma</div>
+    <ul class="nav-links">
+      <li><a href="views/login.html">Connexion</a></li>
+      <li><a href="views/signIn.html" class="btn-nav">S'inscrire</a></li>
+    </ul>
+  </nav>
+
+  <!-- Première impression : titre accrocheur et visuel principal -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Maîtrisez vos finances intelligemment</h1>
+      <p>La plateforme tout-en-un pour gérer vos revenus, vos dépenses et atteindre vos objectifs financiers en toute simplicité.</p>
+      <a href="views/signIn.html" class="btn">Commencer maintenant</a>
+    </div>
+    <div class="hero-image">
+      <img src="./public/assets/images/portemonnaie.png" alt="Icone Wallma">
+    </div>
+  </section>
+
+  <!-- Mise en avant du tableau de bord personnalisable -->
+  <section class="page_section">
+    <div class="page_section_internal">
+      <div class="my-content-text">
+        <h2>Vos finances en un coup d'œil</h2>
+        <p>
+          Ne vous demandez plus où va votre argent !<br>
+          <strong>Wallma</strong> offre un aperçu personnalisable de vos revenus, dépenses et budgets sur un seul écran.
+        </p>
+        <p>
+          Nos rapports et graphiques intuitifs vous permettent de comprendre facilement vos habitudes de dépenses.
+        </p>
+      </div>
+      <div class="image-container">
+        <img class="screenshot_land" src="./public/assets/images/Screenshot (80).png" alt="Graphique financier">
+      </div>
+    </div>
+  </section>
+
+  <!-- Présentation du suivi des dépenses avec catégorisation -->
+  <section class="page_section background_main_pale">
+    <div class="page_section_internal reverse">
+      <div class="my-content-text">
+        <h2>Suivi des dépenses et des revenus</h2>
+        <p>
+          Gérer vos dépenses quotidiennes n'a jamais été aussi simple. 
+          Catégorisez vos sorties d'argent avec un nombre illimité de catégories personnalisées.
+        </p>
+        <p>
+          Configurez des transactions planifiées pour vos factures récurrentes (loyer, Netflix, Internet) et ne soyez plus jamais surpris par un prélèvement.
+        </p>
+      </div>
+      <div class="image-container">
+        <img class="screenshot_land" src="./public/assets/images/Screenshot (81).png" alt="Interface de dépenses">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="text-align: center; padding: 20px; background: var(--primary); color: var(--white);">
+      &copy; 2024 Wallma. Tous droits réservés.
+    </div>
+  </footer>
+
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

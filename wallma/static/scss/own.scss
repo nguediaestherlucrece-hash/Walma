@@ -1,0 +1,46 @@
+// 1. Facultatif : Importez vos propres utilitaires ou fonctions personnalisées ici
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark"; // Importez les valeurs dark par défaut
+
+// 2. Redéfinissez les variables CSS que vous ciblez pour le mode sombre
+
+// 2. Définissez vos nouvelles variables (LA SURCHARGE)
+$primary: #007bff;     // Bleu par défaut de Bootstrap
+$success: #28a745;     // Vert par défaut
+
+// Je change la couleur primaire en rouge vif AVANT d'importer le reste
+$primary: #8f00e2;
+
+$body-tertiary-bg: #f5f5f5;
+$body-bg:#ffffff;
+$body-secondary-bg:#fafafa;
+$border-color-translucent:#f0f0f0;
+
+
+
+// #303030
+$border-color-translucent-dark:#383838; //bordure des cards dark
+$body-tertiary-bg-dark:#141414;
+$body-secondary-bg-dark:#1f1f1f;
+$body-bg-dark:#292929;
+$border-color-dark:#2f2f2f;
+
+
+
+
+// Exemple : Définir la couleur de la bordure et du texte si nécessaire
+
+
+
+ // J'active les ombres partout
+
+// 3. Importez Bootstrap (Utilise maintenant VOS variables !)
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// 4. Facultatif : Ajoutez du CSS personnalisé qui n'utilise pas de variables
+
+
+
+
+//modifier le nav link pour qu'il prenne une couleur sombbre

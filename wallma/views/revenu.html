@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en " >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script type="module" src="/src/main.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <title>revenu</title>
+
+</head>
+
+<body class="d-flex flex-nowrap">
+  <!-- Barre de navigation verticale -->
+  <header class="d-none d-lg-flex flex-column flex-shrink-0 p-3  bg-body-tertiary" style="width: 300px">
+
+
+
+
+  </header>
+
+  <!-- Espace de travail -->
+  <main class="flex-grow-1 overflow-auto p-2 ps-sm-4 pe-sm-4 bg-body-secondary d-flex flex-column">
+    <!-- Barre d'acces rapide -->
+    <section id="work-header" class="row position-sticky top-0  pt-2  pb-2 ps-md-2 pe-md-2  z-1  g-0 bg-body-secondary">
+
+      <div class="col  justify-content-between   d-flex flex-row align-items-center p-0">
+
+        <nav class="col d-flex flex-row gap-4 align-items-center  justify-content-start">
+
+         
+          <!-- Menu invisible -->
+          
+        </nav>
+        
+        
+      </div>
+    </section>
+    <span class=" d-md-block fs-4 fw-medium ms-2" data-i18n="revenu.titreRevenu"></span>
+
+    <!-- section du diagramme en ligne -->
+
+    <!-- tableau de revenu -->
+    <section class="row    d-flex justify-content-between flex-column align-items-center g-0 m-2 ">
+      <div class="container-fluid p-0 m-0 mt-3 " style="max-width: 800px;">
+
+        <div class="container-fluid p-0 m-0 mb-3  ">
+          <div class="row">
+            <div class="col">
+              <div class="container-fluid p-0 m-0">
+                <div class="text-body-secondary " style="font-size: 0.9rem;" data-i18n="revenu.totalRevenu"></div>
+                <div class="fs-1 fw-bold" id="totalRevenu"></div>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-end  align-items-center">
+              <button class="btn btn-primary  btn " type="button" data-bs-toggle="modal" data-bs-target="#ajoutmodal"
+                data-i18n="revenu.ajout" id="boutonAjoutR">
+
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="input-group mb-4">
+          <span class="input-group-text " id="search-icon">
+            <i class="bi bi-search"></i>
+          </span>
+          <input type="text" class="form-control " placeholder="Rechercher..." aria-describedby="search-icon"
+            id="rechercherDescription">
+        </div>
+        <ul class="nav nav-pills  d-flex align-items-center  gap-3 mb-3 mt-4" role="tablist" id="choixCategorie">
+          <li class="nav-item" role="presentation">
+            <div class=" nav-link active rounded-4  px-3 py-1 filtreCathegories" data-id="tout" data-bs-toggle="tab"
+              data-bs-target="#stats-pane" type="button" role="tab" aria-controls="stats-pane" aria-selected="false" data-i18n="revenu.filtreTout"></div>
+          </li>
+          <!-- <li class="nav-item" role="presentation">
+            <div class="nav-link rounded-4 px-3 py-1" id="profil-tab" data-bs-toggle="tab" data-bs-target="#profil-pane"
+              type="button" role="tab" aria-controls="profil-pane" aria-selected="true">Salaire</div>
+          </li> -->
+        </ul>
+        <!-- pour afficher la liste des revenu -->
+        <div id="listeRevenus">
+         
+          <div class="dropdown col-auto" ></div>
+
+          
+        </div>
+
+      </div>
+      <!-- onglet pour l'ajout  -->
+      <div class="modal fade " id="ajoutmodal" tabindex="-1" aria-labelledby="ajoutmodalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 me-3" id="ajoutmodalLabel" data-i18n="revenu.ajouttitremodal"></h1>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#texteTesseract" class="text-decoration-none"
+                id="fichier">
+               
+                <i class="bi bi-images fs-4" id="ouvrirtesseract"></i>
+              </a>
+              <input type="file" id="inputImage" accept="image/*" style="display: none;">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="monformulaireajout">
+                <div class="mb-0">
+                  <label for="cathegorie" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.ajoutcategorie"></label>
+                  <select class="form-select selectCategorie selectaffichecategorie  " >
+                    <!-- <option value="tout" selected class="toutCathegorie" data-i18n="revenu.toutlescategorie"></option> -->
+
+                    <option value="autre" data-i18n="revenu.autreCategorie">
+
+                    </option>
+                  </select>
+                  <!-- <input type="text" class="form-control " id="cathegorie" required>
+                  <div class="invalid-feedback">champ obligatoire</div> -->
+                </div>
+                <!-- Champ caché au départ -->
+                <div class="mb-3 d-none autreCategorieBloc" >
+                  <input type="text" class="form-control autreCategorie " 
+                    placeholder="Entrer la nouvelle catégorie">
+                </div>
+
+                <div class="mb-0">
+                  <label for="montant" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.montantajout"></label>
+                  <input type="number" class="form-control" id="montant" min="0" step="1" required>
+                  <div id="montantError" class="invalid-feedback" data-i18n="revenu.erreurmontantajout"></div>
+                </div>
+                <div class="mb-0">
+                  <label for="emplacement" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.emplacementajout"></label>
+                  <input type="text" class="form-control" id="emplacement" required>
+                  <div class="invalid-feedback" data-i18n="revenu.obligatoirechamp"></div>
+                </div>
+                <div class="mb-0">
+                  <label for="description" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.description"></label>
+                  <textarea class="form-control" id="description"></textarea>
+                  <div class="invalid-feedback" data-i18n="revenu.obligatoirechamp"></div>
+                </div>
+                <div class="p-2 d-flex g-2 justify-content-end ">
+                  <button type="button" class="btn btn-secondary me-2 " id="btnAnnuler" data-bs-dismiss="modal"
+                    data-i18n="revenu.boutonannuler"></button>
+                  <button type="submit" class="btn btn-primary" id="btnAjouter" data-i18n="revenu.boutonajout"></button>
+                </div>
+
+              </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- onglet pour afficher le texte tirer de l'image avec tesseract -->
+      <div class="modal fade" id="texteTesseract" tabindex="-1" aria-labelledby="texteTesseract" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="texteTesseractlabel" data-i18n="revenu.texteScanner"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+
+            </div>
+            <div class="modal-body">
+              <p id="modaltexttesseract"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                data-i18n="revenu.boutonannuler"></button>
+              <button type="button" class="btn btn-primary" id="ajouterParImage" data-bs-target="#ajoutmodal"
+                data-bs-toggle="modal" data-i18n="revenu.boutonappliquertesseract"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- onglet pour modifier -->
+      <div class="modal fade " id="modifiermodal" tabindex="-1" aria-labelledby="modifiermodallabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modifiermodal" data-i18n="revenu.titremodifier"></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-0">
+                  <label for="cathegorie" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.ajoutcategorie"></label>
+                  <select class="form-select selectCategorie selectaffichecategorie " >
+                    <!-- <option value="tout" selected class="toutCathegorie" data-i18n="revenu.toutlescategorie"></option> -->
+
+                    <option value="autre" data-i18n="revenu.autreCategorie">
+
+                    </option>
+                  </select>
+                  <!-- Champ caché au départ -->
+                  <div class="mb-3 d-none autreCategorieBloc" >
+                    <input type="text" class="form-control  autreCategorieModif" 
+                      placeholder="Entrer la nouvelle catégorie">
+                  </div>
+                </div>
+                <div class="mb-0">
+                  <label for="montan" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.montantajout"></label>
+                  <input type="text" class="form-control" id="montantmodif" placeholder="40000 FCFA">
+                </div>
+                <div class="mb-0">
+                  <label for="emplacemen" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.emplacementajout"></label>
+                  <input type="text" class="form-control" id="emplacementmodif" placeholder="en banque">
+                </div>
+                <!-- <div class="mb-0">
+                  <label for="dateAjou" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.date">
+                  </label>
+                  <input type="text" class="form-control" id="datemodif" placeholder="21-02-2022">
+                </div> -->
+                <div class="mb-0">
+                  <label for="descriptio" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="revenu.description"></label>
+                  <textarea class="form-control" id="descriptionmodif"
+                    placeholder="j'ai recu un viremetn banquaire de saint jean pour mon travzil de prof d'algortme dans l'universite"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                data-i18n="revenu.boutonannuler"></button>
+              <button type="button" class="btn btn-primary" id="Enregistrermodif"
+                data-i18n="revenu.boutonenregistrer"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- voir les details  de revenu -->
+      <div class="modal fade" id="voirrevenu" tabindex="-1" aria-labelledby="voirrevenulabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-scrollable modal-dialog-centered ">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <div class="d-flex justify-content-start align-items-center ">
+                <h4 id="labelcathegorie" class="me-2 fw-bold"></h4>
+                <h4 id="labelmontant" ></h4>
+              </div>
+              <!-- <h5 class="modal-title" id="voirrevenulabel">salaire 100000 FCFA</h5> -->
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div
+              class=" d-flex  flex-row justify-content-around align-items-center gap-3 pe-md-1 ps-md-1 gap-md-0 p-se-3 pt-3 pe-sm-3">
+              <div class=" ">
+                <p><strong data-i18n="revenu.cathegorie"></strong></p>
+                <p><strong data-i18n="revenu.montantajout"></strong></p>
+                <p><strong data-i18n="revenu.emplacementajout"></strong></p>
+                <p><strong data-i18n="revenu.dateafficher"></strong></p>
+
+              </div>
+              <!-- les info a prendre dans la BD -->
+              <div class="">
+                <p id="voircathegorie"></p>
+                <p id="voirmontant"></p>
+                <p id="voiremplacement"></p>
+                <p id="voirdate"></p>
+
+              </div>
+            </div>
+            <strong><p class="w-75 container" data-i18n="revenu.description"></p></strong>
+            <span id="voirdescription" class="w-75 container"></span>
+
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                data-i18n="revenu.boutonfermermodal"></button>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifiermodal"
+                id="modifiersurvoir" data-i18n="revenu.boutonmodifierinfo"></button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="../static/js/PageController/RevenuController.js"></script>
+
+</body>
+
+</html>

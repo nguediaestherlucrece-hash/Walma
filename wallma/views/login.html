@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="../static/js/PageController/loginController.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Login</title>
+</head>
+
+<body style="height: 100vh;">
+    <main class="container-fluid h-100 bg-body-secondary">
+        <div class="row h-100">
+            <div class="col   h-100">
+                <section class="container-fluid  h-100 d-flex align-items-center justify-content-center flex-column"
+                    style="max-width: 400px;">
+                    <img src="../assets/logo/logo_filled.png" class="img-fluid text-center mx-auto d-block mb-4"
+                        width="80px">
+                    <h3 class="text-center mb-3" data-i18n="login.log"></h3>
+                    <form class="mb-4  w-100 needs-validation" id="loginForm">
+                        <input type="email" class="form-control mb-3 rounded-2" placeholder="Email" id="email" required>
+
+                        <input type="password" class="form-control mb-3 rounded-2" placeholder="Mot de passe"
+                            id="password" required pattern="^.{8,}$">
+
+                        <div class="invalid-feedback mb-3 mt-3" id="otherError">
+
+                        </div>
+                        <button class="btn btn-primary w-100 rounded-2" style="height: 50px;" data-i18n="login.btnLogin"></button>
+                    </form>
+                    <div class="text-center">
+                        <h6 class="text-center" data-i18n="login.noAccount"></h6>
+                        <a href="signIn.html" class="text-decoration-none" data-i18n="login.linkSignIn"></a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

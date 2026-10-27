@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>Profil</title>
+</head>
+
+<body class="d-flex flex-nowrap ">
+
+    <!-- Barre de navigation verticale -->
+    <header class="d-none d-lg-flex flex-column flex-shrink-0 p-3  bg-body-tertiary" style="width: 300px">
+    </header>
+
+    <!-- Espace de travail -->
+    <main class="container-fluid flex-grow-1 bg-body-secondary overflow-auto pe-3 ps-3 ">
+        <!-- Barre d'acces rapide -->
+        <section id="work-header"
+            class="row position-sticky top-0  pt-2  pb-2 ps-md-2 pe-md-2  z-1  g-0 bg-body-secondary">
+
+            <div class="col   align-items-center p-0">
+
+                <nav class="col-auto d-flex flex-row gap-4 align-items-center  justify-content-start ">
+
+                  
+                    <!-- Menu invisible -->
+                     
+                   
+                </nav>
+                <span class=" fs-4 fw-medium">Profil</span>
+                 
+
+            </div>
+        </section>
+
+        <!-- profil -->
+        <section class="row g-0">
+            <div class="col d-flex flex-column align-items-center">
+                <div class="container m-0 p-0 d-flex flex-column gap-3 pb-2" style="max-width: 500px;">
+                    <div class="row">
+                        <div class="col h-100  d-flex flex-column align-items-center">
+                            <div
+                                class="container-fluid   d-flex flex-column align-items-center justify-content-center  p-5 pb-3 gap-4">
+                                <div id="photo-profil" class="position-relative">
+
+                                    <div id="default-photo" class="rounded-circle bg-body-tertiary "
+                                        style="height: 120px;width: 120px;">
+                                        <img id="preview" class="rounded-circle bg-body-tertiary "
+                                            style="width:120px; height:120px;">
+                                    </div>
+                                    <input type="file" id="imageInput" accept="image/*" hidden>
+                                    <label for="imageInput" class="position-absolute bottom-0 end-0 mb-1 me-1">
+                                        <i class="bi bi-plus  card p-1 rounded-circle"></i>
+                                    </label>
+                                </div>
+
+
+
+
+                                <span class="h5" id="userName">
+                                   
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col h-100">
+                            <ul class="nav nav-underline justify-content-around mb-4" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <i class="bi bi-clipboard-data fs-2 nav-link active" id="stats-tab"
+                                        data-bs-toggle="tab" data-bs-target="#stats-pane" type="button" role="tab"
+                                        aria-controls="stats-pane" aria-selected="false"></i>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <i class="bi bi-person-lines-fill fs-2 nav-link " id="profil-tab"
+                                        data-bs-toggle="tab" data-bs-target="#profil-pane" type="button" role="tab"
+                                        aria-controls="profil-pane" aria-selected="true"></i>
+                                </li>
+                            </ul>
+                            <!-- 2. Les blocs de contenu correspondants -->
+                            <div class="tab-content " id="myTabContent">
+                                <!-- Contenu pour l'accueil (visible par défaut car .show et .active) -->
+                                <div class="tab-pane fade show active text-center" id="stats-pane" role="tabpanel"
+                                    aria-labelledby="stats-tab" tabindex="0">
+                                    <p>Bienvenue sur la page d'accueil ! C'est le contenu par défaut.</p>
+                                </div>
+                                <!-- Contenu pour le profil (caché par défaut) -->
+                                <div class="tab-pane fade d-flex m-auto  flex-column align-items-center"
+                                    id="profil-pane" role="tabpanel" aria-labelledby="profil-tab" tabindex="0"
+                                    style="max-width: 400px;">
+                                    <div class="row w-100 text-end ">
+                                        <i id="toggleActiveBtn" class="bi bi-pencil fs-5 d-block text-end"></i>
+                                    </div>
+                                    <form id="profilForm">
+                                        <div class="mb-2">
+                                            <label for="nom" class="form-label fw-semibold " data-i18n="profil.labelNomPrenom" id="text"></label>
+                                            <input type="nom" class="form-control rounded-2"  id="labelNomPrenom"
+                                                disabled="true">
+                                        </div>
+                                        <div class="mb-2">
+                                            <label for="email" class="form-label fw-semibold" data-i18n="profil.labelEmail" id="labelEmail"></label>
+                                            <input type="email" class="form-control rounded-2" id="email"
+                                                 disabled="true">
+                                        </div>
+                                        <div class="mb-2">
+                                            <label for="password" class="form-label fw-semibold" data-i18n="profil.password" id="labelPassword"></label>
+                                            <input type="password" class="form-control rounded-2" id="password"
+                                                disabled="true">
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col">
+                                                <label for="sexe" class="form-label fw-semibold" data-i18n="profil.sexe" id="labelSexe"></label>
+                                                <select class="form-select rounded-2 " id="sexe" disabled="true">
+                                                    <option selected data-i18n="profil.sexeH" ></option>
+                                        
+                                                    <option data-i18n="profil.sexeF"></option>
+                                                </select>
+                                            </div>
+                                            <div class="col">
+                                                <label for="tel" class="form-label fw-semibold" data-i18n="profil.tel" id="labelTel">
+                                                </label>
+                                                <input type="tel" class="form-control rounded-2" disabled="true"
+                                                    id="tel" >
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col"></div>
+                                            <div class="col-12 ">
+                                                <button type="button" class="btn btn-primary rounded-2 w-100"
+                                                    id="submit" disabled="true"
+                                                    style="height: 50px;" data-i18n="profil.save"></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/static/js/PageController/profilController.js"></script>
+
+
+
+</body>
+
+
+
+</html>

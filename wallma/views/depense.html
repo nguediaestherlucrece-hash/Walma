@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script type="module" src="/static/js/disp.js"></script>
+
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script type="module" src="/src/main.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <title>Depenses</title>
+
+</head>
+
+<body class="d-flex flex-nowrap">
+  <!-- Barre de navigation verticale -->
+  <header class="d-none d-lg-flex flex-column flex-shrink-0 p-3  bg-body-tertiary" style="width: 300px"></header>
+
+
+
+
+  </header>
+
+  <!-- Espace de travail -->
+  <main class="flex-grow-1 overflow-auto p-2 ps-sm-4 pe-sm-4 bg-body-secondary d-flex flex-column">
+    <!-- Barre d'acces rapide -->
+    <section id="work-header" class="row position-sticky top-0  pt-2  pb-2 ps-md-2 pe-md-2  z-1  g-0 bg-body-secondary">
+
+      <div class="col  justify-content-between   d-flex flex-row align-items-center p-0">
+
+        <nav class="col d-flex flex-row gap-4 align-items-center  justify-content-start">
+
+         
+          <!-- Menu invisible -->
+          
+        </nav>
+       <!-- <div class="container w-auto d-flex flex-row gap-2 align-items-center  pe-0">
+          <div class="dropdown">
+            <button class="btn border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-translate fs-5 "></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" style="width: 120px; min-width: 100px">
+              <li>
+                <a class="dropdown-item active" aria-current="true" href="#">Francais</a>
+              </li>
+              <li><a class="dropdown-item" href="#">Anglais</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button id="themeBtn" class="btn border-0 dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i id="themeIcon" class="bi bi-sun-fill  fs-5 "></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" style="width: 120px;min-width:100px;">
+              <li>
+                <a class="dropdown-item" href="#" data-bs-theme-value="dark">
+                  <i class="bi bi-moon-stars me-2 fs-6 " aria-pressed="false"></i>Dark
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item active" aria-current="true" href="#" data-bs-theme-value="Light"
+                  aria-pressed="false">
+                  <i class="bi bi-sun-fill fs-6 me-2 "></i>Light
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" data-bs-theme-value="auto" aria-pressed="true">
+                  <i class="bi bi-circle-half fs-6 me-2"></i>Auto
+                </a>
+              </li>
+
+            </ul>
+          </div>
+          <div class="container-fluid   d-flex flex-row justify-content-between gap-4 pe-0">
+
+            <div>
+              <i class="bi bi-trophy fs-5 d-xl-none card p-2"></i>
+            </div>
+            <div>
+              <i class=" bi bi-bell fs-5 card p-2"></i>
+            </div>
+          </div>
+        </div>-->
+      </div>
+    </section>
+
+    <!-- section du diagramme en ligne -->
+
+    <!-- tableau de dépenses -->
+     <span class="d-none d-md-block fs-4 fw-medium" data-i18n="sideBar.linkDepenses"></span>
+    <section class="row    d-flex justify-content-between flex-column align-items-center g-0 m-2 ">
+      <div class="container-fluid p-0 m-0 mt-5 " style="max-width: 800px;">
+
+        <div class="container-fluid p-0 m-0 mb-5  ">
+          <div class="row">
+            <div class="col">
+              <div class="container-fluid p-0 m-0">
+                <div class="text-body-secondary " style="font-size: 0.9rem;" data-i18n="depense.totalDepenses">Total des
+                  dépenses</div>
+                <div class="fs-1 fw-bold" id="totalDepenses"></div>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-end  align-items-center">
+              <button class="btn btn-primary  btn " type="button" data-bs-toggle="modal" data-bs-target="#ajoutmodal"
+                data-i18n="depense.ajouter">
+                Ajouter
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div>
+
+
+
+        </div>
+        <div class="input-group mb-4">
+          <span class="input-group-text " id="search-icon">
+            <i class="bi bi-search"></i>
+          </span>
+          <input type="text" class="form-control " placeholder="Rechercher..." aria-describedby="search-icon"
+            id="searchInput">
+        </div>
+        <ul class="nav nav-pills  d-flex align-items-center  gap-3 mb-5 mt-4" role="tablist" id="choixCategorieDepense">
+          <li class="nav-item" role="presentation">
+            <div class=" nav-link active rounded-4  px-3 py-1 filtreCategoriesDepense" data-id="tout" data-bs-toggle="tab"
+              data-bs-target="#stats-pane" type="button" role="tab" aria-controls="stats-pane" aria-selected="false"
+              data-i18n="depense.tous">
+              Tous</div>
+          </li>
+        </ul>
+        <!-- pour afficher la liste des dépenses -->
+        <div id="listeDepenses">
+        </div>
+
+      </div>
+      <!-- onglet pour l'ajout  -->
+      <div class="modal fade " id="ajoutmodal" tabindex="-1" aria-labelledby="ajoutmodalLabel" aria-hidden="false">
+        <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 me-3" id="ajoutmodalLabel" data-i18n="depense.ajoutTitreModal">Ajout de
+                dépense</h1>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#texteTesseract" class="text-decoration-none"
+                id="fichier">
+               
+                <i class="bi bi-images fs-4" id="ouvrirtesseract"></i>
+              </a>
+              <input type="file" id="inputImage" accept="image/*" style="display: none;">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="monformulaireajout">
+                <div class="mb-0">
+                  <label for="categorie" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="depense.categorie">Catégorie:</label>
+                  <select class="form-select selectCategorie " id="categorie" required>
+                    <option value="" selected data-i18n="depense.selectionnerCategorie">Sélectionner une catégorie
+                    </option>
+                    <option value="facture" data-i18n="depense.facture">Facture</option>
+                    <option value="achat" data-i18n="depense.achat">Achat</option>
+                    <option value="transport" data-i18n="depense.transport">Transport</option>
+                    <option value="sante" data-i18n="depense.sante">Santé</option>
+                    <option value="autre" data-i18n="depense.autre">Autre</option>
+                  </select>
+                  <div class="invalid-feedback" data-i18n="depense.champObligatoire">champ obligatoire</div>
+                </div>
+                <!-- Champ cache au départ -->
+                <div class="mb-3 d-none" id="autreCategorieBloc">
+                  <input type="text" class="form-control " id="autreCategorie" data-i18n="depense.nouvelleCategorie"
+                    placeholder="Entrer la nouvelle catégorie">
+                </div>
+                <div class="mb-0">
+                  <label for="montant" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="depense.montant">Montant:</label>
+                  <input type="number" class="form-control" id="montant" min="0" step="25" required>
+                  <div id="montantError" class="invalid-feedback" data-i18n="depense.erreurMontant">montant incorrect
+                  </div>
+                </div>
+                <div class="mb-0">
+                  <label for="description" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="depense.description">Description:</label>
+                  <textarea class="form-control" id="description"></textarea>
+                  <div class="invalid-feedback" data-i18n="depense.champObligatoire">champ obligatoire</div>
+                </div>
+                <div class="p-2 d-flex g-2 justify-content-end ">
+                  <button type="button" class="btn btn-secondary me-2 " id="btnAnnuler" data-bs-dismiss="modal"
+                    data-i18n="depense.annuler">Annuler</button>
+                  <button data-bs-dismiss="modal" type="submit" class="btn btn-primary" id="btnAjouter"
+                    data-i18n="depense.ajouter">Ajouter</button>
+                </div>
+
+              </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- onglet pour afficher le texte tirer de l'image avec tesseract -->
+      <div class="modal fade" id="texteTesseract" tabindex="-1" aria-labelledby="texteTesseract" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="texteTesseractlabel" data-i18n="depense.texteScanneTitle">Texte scanné</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+
+            </div>
+            <div class="modal-body">
+              <p id="modaltexttesseract"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="depense.annuler">Annuler</button>
+              <button type="button" class="btn btn-primary" data-bs-target="#ajoutmodal" data-bs-toggle="modal" id="ajouterParImage" data-i18n="depense.boutonappliquertesseract">Appliquer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- onglet pour modifier -->
+      <div class="modal fade " id="modifiermodal" tabindex="-1" aria-labelledby="modifiermodallabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modifiermodal" data-i18n="depense.modifierTitre">Modifier la dépense</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-0">
+                  <label for="categoriemodif" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="depense.categorie">Catégorie:</label>
+                  <select class="form-select selectCategorie selectaffichecategorie" id="categoriemodif">
+                    <option value="autre" data-i18n="depense.autre">Autre</option>
+                  </select>
+                  <!-- Champ caché au départ -->
+                  <div class="mb-3 d-none autreCategorieBloc" id="autreCategorieBlocModif">
+                    <input type="text" class="form-control autreCategorieModif" id="autreCategorieModif" 
+                      placeholder="Entrer la nouvelle catégorie">
+                  </div>
+                </div>
+                <div class="mb-0">
+                  <label for="montantmodif" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="depense.montant">Montant:</label>
+                  <input type="text" class="form-control" id="montantmodif" placeholder="5000 FCFA">
+                </div>
+                <div class="mb-0">
+                  <label for="descriptionmodif" class="col-form-label mb-0 col-form-label small text-muted fs-6"
+                    data-i18n="depense.description">Description:</label>
+                  <textarea class="form-control" id="descriptionmodif"
+                    placeholder="Achat de produits alimentaires au supermarché"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                data-i18n="depense.annuler">Annuler</button>
+              <button type="button" class="btn btn-primary" id="Enregistrermodif"
+                data-i18n="depense.enregistrer">Enregistrer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- voir les details  de dépense -->
+      <div class="modal fade" id="voirdepense" tabindex="-1" aria-labelledby="voirdepenseLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-scrollable modal-dialog-centered ">
+          <div class="modal-content ">
+
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="voirdepenseLabel" data-i18n="depense.detailsDepense">Détails dépense</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class=" container pt-3 ps-5 pe-5 ms-5 me-5">
+              <div class="row">
+                <div class="row">
+                  <div class="col">
+                    <h6 class="fw-bold" data-i18n="depense.categorie"></h6>
+                  </div>
+                  <div class="col"><span id="voircategorie"></span></div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <h6 class="fw-bold" data-i18n="depense.montant"></h6>
+                  </div>
+                  <div class="col"><span id="voirmontant"></span></div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <h6 class="fw-bold" data-i18n="depense.date"></h6>
+                  </div>
+                  <div class="col"> <span id="voirdate"></span></div>
+                </div>
+                <div class="row">
+                  <h6 class="fw-bold" data-i18n="depense.description"></h6>
+                  <p id="voirdescription" ></p>
+
+
+                </div>
+
+                
+              </div>
+
+              <!-- les info a prendre dans la BD -->
+
+            </div>
+
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                data-i18n="depense.fermer">Fermer</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="../static/js/PageController/depenseController.js"></script>
+
+</body>
+
+</html>
